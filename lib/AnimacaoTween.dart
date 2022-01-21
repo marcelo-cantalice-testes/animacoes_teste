@@ -37,6 +37,18 @@ class _AnimacaoTweenStateState extends State<AnimacaoTweenState> {
     );
 
     /* 
+    TweenAnimationBuilder(
+        tween: colorTween,
+        duration: Duration(seconds: 2),
+        builder: (context, Color? color, child) {
+          return ColorFiltered(
+            colorFilter: ColorFilter.mode(Color(color!.value), BlendMode.overlay),
+            child: Image.asset("images/estrelas.jpg"),
+            );
+        },
+      ),
+    );
+--------------------------------------------------------------------------    
 TweenAnimationBuilder<double>(
           tween: Tween(begin: 50, end: 180),
           duration: Duration(seconds: 2),
