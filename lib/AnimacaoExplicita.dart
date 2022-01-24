@@ -11,8 +11,14 @@ class AnimacaoExplicita extends StatefulWidget {
 
 class _AnimacaoExplicitaState extends State<AnimacaoExplicita> with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
+  late AnimationStatus _animationStatus;
   _efeitosLogo(){
     print("Botao pressionasdo");
+    if(_animationStatus == AnimationStatus.dismissed){
+      _animationController.forward();
+    }else{
+      _animationController.reverse();
+    }
     /*
     if(_animationController.isAnimating){
       _animationController.stop();
@@ -24,11 +30,17 @@ class _AnimacaoExplicitaState extends State<AnimacaoExplicita> with SingleTicker
   @override
   void initState() {
     super.initState();
+    _animationStatus =AnimationStatus.dismissed;
    _animationController = AnimationController( //controlador da animacao PS: necessita do  with SingleTickerProviderStateMixin
      duration: Duration(seconds: 5),
      vsync: this
    )
-   ..repeat();//repete de forma indefinida
+   //..repeat();//repete de forma indefinida
+   ..repeat()
+   ..addStatusListener((status) {
+     _animationStatus= status;
+
+    }); //permite monitorar o status da animacao
   }
   @override
   void dispose() {
